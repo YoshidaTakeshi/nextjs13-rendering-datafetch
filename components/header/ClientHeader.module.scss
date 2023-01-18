@@ -1,0 +1,17 @@
+.header-component {
+  border-bottom: 1px solid grey;
+  display: flex;
+  gap: 12px;
+  height: 40px;
+  align-items: center;
+
+  > .title {
+    font-size: 28px;
+    font-weight: 700;
+  }
+
+  > .tabs {
+    display: flex;
+    gap: 12px;
+  }
+}
