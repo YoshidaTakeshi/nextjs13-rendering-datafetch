@@ -1,12 +1,20 @@
-import { FC, PropsWithChildren } from "react";
+import { FC, PropsWithChildren, Suspense } from "react";
+import ClientHeader from "../components/header/ClientHeader";
+import ServerHeader from "../components/header/ServerHeader";
+import "../styles/globals.scss";
 
 const RootLayout: FC<PropsWithChildren> = ({ children }) => {
   return (
-    <html lang="en">
+    <html>
       <head>
         <title>Next.js</title>
       </head>
-      <body>{children}</body>
+      <body>
+        {/* @ts-expect-error Server Component */}
+        <ServerHeader />
+        <ClientHeader />
+        {children}
+      </body>
     </html>
   );
 };

@@ -1,29 +1,23 @@
-import { use } from "react";
+import { Suspense } from "react";
+import Posts from "../components/post/Posts";
+import Users from "../components/user/users";
+import { fetchComment, fetchPosts, fetchUsers } from "../utils/fetcher";
 
-type User = {
-  id: number;
-  login: string;
-};
+const Page = async () => {
+  fetchComment();
 
-const fetchUsers: () => Promise<User[]> = async () => {
-  const res = await fetch("https://api.github.com/users");
-  return res.json();
-};
-
-export default function Page() {
-  const users = use(fetchUsers());
   return (
-    <div>
-      <h1>GitHub Users!</h1>
-      <div>
-        {users.map((user) => {
-          return (
-            <div key={user.id}>
-              {user.id}: {user.login}
-            </div>
-          );
-        })}
-      </div>
+    <div style={{ display: "flex" }}>
+      <Suspense fallback={<div>Loading users...</div>}>
+        {/* @ts-expect-error Server Component */}
+        <Users />
+      </Suspense>
+      <Suspense fallback={<div>Loading posts...</div>}>
+        {/* @ts-expect-error Server Component */}
+        <Posts />
+      </Suspense>
     </div>
   );
-}
+};
+
+export default Page;
