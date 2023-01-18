@@ -1,14 +1,20 @@
-import { fetchUsers } from "../../utils/fetcher";
+import Link from "next/link";
+import { fetchComment, fetchUser } from "../../utils/fetcher";
 import style from "./ServerHeader.module.scss";
 
+// サーバーコンポーネントはasync/awaitを使用できる
 const ServerHeader = async () => {
-  // const users = await fetchUsers();
-  // const mainUser = users[0];
+  const commentData = fetchComment();
+  const userData = fetchUser();
+
+  const { body } = await commentData;
+  const { name } = await userData;
 
   return (
     <div className={style["header-component"]}>
       <p className={style["title"]}>ServerHeader</p>
-      {/* <p>{mainUser.name}</p> */}
+      <p>{name}</p>
+      <p>{body}</p>
     </div>
   );
 };

@@ -1,11 +1,9 @@
 import { Suspense } from "react";
-import Posts from "../components/post/Posts";
-import Users from "../components/user/users";
-import { fetchComment, fetchPosts, fetchUsers } from "../utils/fetcher";
+import Posts from "../../components/post/Posts";
+import Users from "../../components/user/users";
+import { fetchComment } from "../../utils/fetcher";
 
-const Page = async () => {
-  fetchComment();
-
+const Kensho2Page = async () => {
   return (
     <div style={{ display: "flex" }}>
       <Suspense fallback={<div>Loading users...</div>}>
@@ -20,4 +18,4 @@ const Page = async () => {
   );
 };
 
-export default Page;
+export default Kensho2Page;

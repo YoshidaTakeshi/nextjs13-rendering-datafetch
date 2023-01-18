@@ -1,17 +1,17 @@
 "use client";
+// この記述だけでクライアントコンポーネントになる
 
 import useSWR from "swr";
-import { fetchUsers } from "../../utils/fetcher";
+import { fetchUser } from "../../utils/fetcher";
 import style from "./ClientHeader.module.scss";
 
 const ClientHeader = () => {
-  const { data: posts = [] } = useSWR("user", fetchUsers);
-  const mainPost = posts[0];
+  const { data: user } = useSWR("user", fetchUser);
 
   return (
     <div className={style["header-component"]}>
       <p className={style["title"]}>ClientHeader</p>
-      <p>{mainPost && mainPost.name}</p>
+      <p>{user && user.name}</p>
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import { FC, PropsWithChildren, Suspense } from "react";
-import ClientHeader from "../components/header/ClientHeader";
-import ServerHeader from "../components/header/ServerHeader";
+
 import "../styles/globals.scss";
+import DefaultHeader from "../components/header/DefaultHeader";
 
 const RootLayout: FC<PropsWithChildren> = ({ children }) => {
   return (
@@ -10,9 +10,7 @@ const RootLayout: FC<PropsWithChildren> = ({ children }) => {
         <title>Next.js</title>
       </head>
       <body>
-        {/* @ts-expect-error Server Component */}
-        <ServerHeader />
-        <ClientHeader />
+        <DefaultHeader />
         {children}
       </body>
     </html>
