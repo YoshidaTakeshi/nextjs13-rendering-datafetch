@@ -15,17 +15,22 @@ export type Comment = {
 }
 
 export const fetchPosts: () => Promise<Post[]> = async () => {
-  const res = await fetch("http://localhost:3000/api/posts", { next: { revalidate: 0 } });
-  await new Promise((resolve) => setTimeout(resolve, 3000));
+  const res = await fetch("http://localhost:3000/api/posts", { cache: 'no-store' });
   return res.json();
 };
 
 export const fetchUsers: () => Promise<User[]> = async () => {
-  const res = await fetch("http://localhost:3000/api/users", { next: { revalidate: 0 } });
+  const res = await fetch("http://localhost:3000/api/users");
+  return res.json();
+};
+
+export const fetchUser: () => Promise<User> = async () => {
+  const res = await fetch("http://localhost:3000/api/user");
   return res.json();
 };
 
 export const fetchComment: () => Promise<Comment> = async () => {
+  // const res = await fetch("http://localhost:3000/api/comment", { cache: 'no-store' });
   const res = await fetch("http://localhost:3000/api/comment");
   return res.json();
 }
