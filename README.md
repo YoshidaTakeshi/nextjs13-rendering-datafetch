@@ -16,7 +16,7 @@ yarn dev
 
 ## `fetch()` リクエストの自動重複排除
 - `http://localhost:3000/kensho1` 参照
-- pageコンポーネントとServerHeaderコンポーネントの2箇所で 「next13 おもろい」 をresponsとして受け取るapiをcallしているが、コンソールには1度しか 「api called」 が表示されない。
+- pageコンポーネントとServerHeaderコンポーネントの2箇所で 「next13 おもろい」 をresponseとして受け取るapiをcallしている(fetchComment)が、コンソールには1度しか 「api called」 が表示されない。
 - ↑はいずれもサーバーコンポーネント
 - api calledは api routeで実装している。
 - `~/util/fetcher.ts`　の `fetchComment` でデータフェッチを動的としても結果は変わらない。(キャッシュを残さなくても重複排除される。)
