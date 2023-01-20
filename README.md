@@ -12,7 +12,7 @@ yarn dev
 ## サーバーコンポーネント、クライアントコンポーネントでのデータフェッチ速度検証
 - `http://localhost:3000/kensho1` 参照
 - ServerHeader　でのユーザー名表示の方がClientHeaderでのユーザー名表示よりも早い。   
-- `command` + `option` + `u` でリソースを見るとServerHeaderの方にはユーザー名が入って送られてきているが、ClientHeaderの方にはユーザー名が空で送られてきている。
+- `command` + `option` + `u` でソースを見るとServerHeaderの方にはユーザー名が入って送られてきているが、ClientHeaderの方にはユーザー名が空で送られてきている。
 
 ## `fetch()` リクエストの自動重複排除
 - `http://localhost:3000/kensho1` 参照
@@ -26,5 +26,5 @@ yarn dev
 - api route 上でレスポンスを返すまでにsleepの処理を加えている。(usersは2秒、postsは5秒)
 - データフェッチが完全に完了する前に画面が見れる。(コンポーネント単位でローディングが出ている。)
 - データフェッチが完了したものから画面に反映されていく。
-- `~/app/kensho2/page.tsx` の二箇所にある<Suspence>タグをコメントアウトすると、データフェッチが全て完了しないと画面が表示されないことがわかる。
+- `~/app/kensho2/page.tsx` の二箇所にあるSuspenceタグをコメントアウトすると、データフェッチが全て完了しないと画面が表示されないことがわかる。
 
